@@ -1,0 +1,11 @@
+.home-container {
+  width: 1440px;
+  height: 1356px;
+  background: #131313;
+}
+.spider-con {
+  background-image: url(https://res.cloudinary.com/dgwqllbxi/image/upload/v1695374744/spider-image_u4vxny.png);
+  width: 1440px;
+  height: 605px;
+  background-size: cover;
+}
