@@ -94,4 +94,13 @@
   cursor: pointer;
   outline: none;
   border-radius: 8px;
+  border: 0px solid;
+}
+.error-msg {
+  padding-top: 0px;
+  align-self: flex-start;
+  margin-left: 36px;
+  color: #ff0b37;
+  font-size: 12px;
+  margin-left: 50px;
 }

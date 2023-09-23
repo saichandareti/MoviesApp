@@ -1,0 +1,23 @@
+.popular-movies-con {
+  width: 1440px;
+  height: 1908px;
+  background-color: #181818;
+}
+.popular-item {
+  list-style-type: none;
+}
+.popular-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-left: 165px;
+  padding-left: 0;
+}
+.popular-movie {
+  width: 265px;
+  height: 170px;
+  margin-top: 24px;
+  margin-right: 24px;
+  border-radius: 8px;
+}

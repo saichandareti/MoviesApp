@@ -1,0 +1,33 @@
+.contact-con {
+  width: 145px;
+  height: 21px;
+  margin-top: 96px;
+  margin-left: 648px;
+}
+.google-icon {
+  font-family: Font Awesome 5 Brands;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0px;
+  text-align: center;
+  width: 18px;
+  height: 21px;
+  color: #ffffff;
+}
+.icon-margin {
+  margin-left: 24px;
+}
+.contact-us {
+  width: 80px;
+  height: 24px;
+  margin-top: 16px;
+  margin-left: 680px;
+  font-family: HK Grotesk;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: #ffffff;
+}

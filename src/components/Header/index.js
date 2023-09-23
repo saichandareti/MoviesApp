@@ -2,7 +2,7 @@ import './index.css'
 import {HiOutlineSearch} from 'react-icons/hi'
 
 const Header = () => {
-  let hi
+  const hi = 8
 
   return (
     <div className="header-container">
@@ -13,7 +13,6 @@ const Header = () => {
       />
       <p className="home-para">Home</p>
       <p className="popular-para">Popular</p>
-
       <HiOutlineSearch className="search-icon" />
       <img
         src="https://res.cloudinary.com/dgwqllbxi/image/upload/v1695374031/Mask_Group_zdn2jk.png"
