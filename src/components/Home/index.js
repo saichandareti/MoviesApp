@@ -2,6 +2,7 @@ import './index.css'
 import {Component} from 'react'
 import Slider from 'react-slick'
 import Cookies from 'js-cookie'
+import {Link} from 'react-router-dom'
 
 import Header from '../Header'
 import ContactUs from '../ContactUs'
@@ -138,12 +139,14 @@ class Home extends Component {
           <Slider {...settings}>
             {trendingData.map(every => (
               <div className="trending-movie" key={every.id}>
-                <img
-                  src={every.posterPath}
-                  alt={every.title}
-                  key={every.id}
-                  className="trending-movie"
-                />
+                <Link to={`movies/${every.id}`}>
+                  <img
+                    src={every.posterPath}
+                    alt={every.title}
+                    key={every.id}
+                    className="trending-movie"
+                  />
+                </Link>
               </div>
             ))}
           </Slider>
