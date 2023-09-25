@@ -36,6 +36,7 @@ class Popular extends Component {
 
   render() {
     const {popularData} = this.state
+
     return (
       <div className="popular-movies-con">
         <Header />
