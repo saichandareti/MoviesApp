@@ -95,7 +95,7 @@ class SearchMovies extends Component {
         return 'K'
       case apiConstants.inProgress:
         return (
-          <div className="loader-container" testid="loader">
+          <div className="loader-container load-con" testid="loader">
             <Loader type="TailSpin" color="#D81F26" height={50} width={50} />
           </div>
         )
