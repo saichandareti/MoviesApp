@@ -43,9 +43,16 @@
 .search-icon {
   width: 24px;
   height: 24px;
+  color: #ffffff;
+}
+.search-button {
+  width: 24px;
+  height: 24px;
   margin-top: 20px;
   margin-left: 703px;
   color: #ffffff;
+  background-color: transparent;
+  border: 0px solid;
 }
 .avatar {
   width: 48px;
@@ -54,4 +61,7 @@
   margin-left: 56px;
   background-color: #ffffff;
   border-radius: 24px;
+}
+.link-element {
+  text-decoration: none;
 }

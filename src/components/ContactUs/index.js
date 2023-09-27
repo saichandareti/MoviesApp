@@ -9,7 +9,7 @@ const ContactUs = () => (
       <FaInstagram className="google-icon icon-margin" />
       <FaYoutube className="google-icon icon-margin" />
     </div>
-    <p className="contact-us">Contact Us</p>
+    <p className="contact-us">Contact us</p>
   </>
 )
 export default ContactUs

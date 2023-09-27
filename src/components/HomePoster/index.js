@@ -1,9 +1,8 @@
 import './index.css'
 import {Component} from 'react'
 import Cookies from 'js-cookie'
-import {Link} from 'react-router-dom'
 import Loader from 'react-loader-spinner'
-import Slider from 'react-slick'
+import Header from '../Header'
 
 const trendingApiConstants = {
   onSuccess: 'SUCCESS',
@@ -12,17 +11,17 @@ const trendingApiConstants = {
   initial: 'INTIAL',
 }
 
-class Originals extends Component {
+class HomePoster extends Component {
   state = {
-    trendingData: [],
+    poster: [],
     isTrendingSuccess: trendingApiConstants.initial,
   }
 
   componentDidMount() {
-    this.GetOriginalMovies()
+    this.GetTrendingMovies()
   }
 
-  GetOriginalMovies = async () => {
+  GetTrendingMovies = async () => {
     this.setState({isTrendingSuccess: trendingApiConstants.inProgress})
     const jwtToken = Cookies.get('jwt_token')
 
@@ -46,8 +45,11 @@ class Originals extends Component {
         posterPath: each.poster_path,
         title: each.title,
       }))
+
+      const randomPosterDetails =
+        updatedData[Math.ceil(Math.random() * updatedData.length - 1)]
       this.setState({
-        trendingData: updatedData,
+        poster: randomPosterDetails,
         isTrendingSuccess: trendingApiConstants.onSuccess,
       })
     } else if (response.ok !== true) {
@@ -56,52 +58,50 @@ class Originals extends Component {
   }
 
   renderTrendingMovies = () => {
-    const {isTrendingSuccess, trendingData} = this.state
-
+    const {isTrendingSuccess, poster} = this.state
+    const {backdropPath, overview, title} = poster
     const settings = {
       dots: false,
-      slidesToShow: 4,
+      slidesToShow: 5,
       slidesToScroll: 1,
     }
 
     switch (isTrendingSuccess) {
       case trendingApiConstants.onSuccess:
         return (
-          <div className="slick-container">
-            <Slider {...settings}>
-              {trendingData.map(every => (
-                <Link to={`/movies/${every.id}`} key={every.id}>
-                  <div className="trending-movie">
-                    <img
-                      src={every.posterPath}
-                      alt={every.name}
-                      key={every.id}
-                      className="trending-movie"
-                    />
-                  </div>
-                </Link>
-              ))}
-            </Slider>
+          <div
+            className="spider-con"
+            style={{backgroundImage: `url(${backdropPath})`}}
+          >
+            <Header />
+            <h1 className="super-man">{title}</h1>
+            <p className="super-para">{overview}</p>
+            <button type="button" className="play-button">
+              Play
+            </button>
           </div>
         )
       case trendingApiConstants.onFailure:
         return (
-          <div className="originals-failure">
-            <img
-              src="https://res.cloudinary.com/dgwqllbxi/image/upload/v1695825829/alert-triangle_ksyewu.png"
-              alt="failure view"
-              className="x-alert"
-            />
-            <p className="originals-para">
-              Something went wrong. Please try again
-            </p>
-            <button
-              type="button"
-              className="try-again-originals"
-              onClick={this.GetOriginalMovies}
-            >
-              Try Again
-            </button>
+          <div>
+            <Header />
+            <div className="home-poster-failure">
+              <img
+                src="https://res.cloudinary.com/dgwqllbxi/image/upload/v1695825829/alert-triangle_ksyewu.png"
+                alt="alert"
+                className="x-alert"
+              />
+              <p className="originals-para">
+                Something went wrong. Please try again
+              </p>
+              <button
+                type="button"
+                className="try-again-originals"
+                onClick={this.GetTrendingMovies}
+              >
+                Try Again
+              </button>
+            </div>
           </div>
         )
       case trendingApiConstants.inProgress:
@@ -120,5 +120,4 @@ class Originals extends Component {
     return this.renderTrendingMovies()
   }
 }
-
-export default Originals
+export default HomePoster

@@ -8,15 +8,16 @@ import MovieDetails from './components/MovieDetails'
 import SearchMovies from './components/SearchMovies'
 import Account from './components/Account'
 import NotFound from './components/NotFound'
+import ProtectedRoute from './components/ProtectedRoute'
 
 const App = () => (
   <Switch>
     <Route exact path="/login" component={LoginPage} />
-    <Route exact path="/" component={Home} />
-    <Route exact path="/popular" component={Popular} />
-    <Route exact path="/movies/:id" component={MovieDetails} />
-    <Route exact path="/search" component={SearchMovies} />
-    <Route exact path="/account" component={Account} />
+    <ProtectedRoute exact path="/" component={Home} />
+    <ProtectedRoute exact path="/popular" component={Popular} />
+    <ProtectedRoute exact path="/movies/:id" component={MovieDetails} />
+    <ProtectedRoute exact path="/search" component={SearchMovies} />
+    <ProtectedRoute exact path="/account" component={Account} />
     <NotFound />
   </Switch>
 )

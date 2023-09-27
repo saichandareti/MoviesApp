@@ -1,5 +1,6 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
+import {Redirect} from 'react-router-dom'
 import './index.css'
 
 class LoginPage extends Component {
@@ -28,7 +29,7 @@ class LoginPage extends Component {
   }
 
   OnSubmitFailure = errorMsg => {
-    this.setState({errorOccured: true, errorDetails: errorMsg})
+    this.setState({showError: true, errorMsg})
   }
 
   LoginCreds = async event => {
@@ -48,13 +49,19 @@ class LoginPage extends Component {
     const jsonData = await response.json()
 
     if (response.ok === true) {
+      Cookies.set('username', nameInput, {expires: 30})
+      Cookies.set('password', passwordInput, {expires: 30})
       this.OnSubmitSuccess(jsonData.jwt_token)
-    } else {
+    } else if (response.ok !== true) {
       this.OnSubmitFailure(jsonData.error_msg)
     }
   }
 
   render() {
+    const jwtToken = Cookies.get('jwt_token')
+    if (jwtToken !== undefined) {
+      return <Redirect to="/" />
+    }
     const {showError, errorMsg} = this.state
     const display = showError ? (
       <p className="error-msg">{errorMsg}</p>
@@ -65,10 +72,10 @@ class LoginPage extends Component {
       <div className="bg-container">
         <img
           src="https://res.cloudinary.com/dgwqllbxi/image/upload/v1695201554/Group_7399_tj78al.png"
-          alt="movies"
+          alt="login website logo"
           className="movies-image"
         />
-        <div className="login-container">
+        <form className="login-container" onSubmit={this.LoginCreds}>
           <h1 className="login-heading">Login</h1>
           <div className="name-input-con">
             <label htmlFor="name-input" className="username">
@@ -94,13 +101,13 @@ class LoginPage extends Component {
           </div>
           {display}
           <button
-            type="button"
+            type="submit"
             className="login-button"
             onClick={this.LoginCreds}
           >
             Login
           </button>
-        </div>
+        </form>
       </div>
     )
   }

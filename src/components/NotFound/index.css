@@ -7,6 +7,7 @@
   align-items: center;
   background-image: url(https://res.cloudinary.com/dgwqllbxi/image/upload/v1695714138/snow-removal-machine-working-high-ski-slope-snowstorm_454047-2149_1_yif621.png);
   background-size: cover;
+  alt: 'not found';
 }
 .lost-your-way {
   height: 125px;

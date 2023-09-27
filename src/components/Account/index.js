@@ -10,29 +10,37 @@ class Account extends Component {
     if (jwtToken !== undefined) {
       const {history} = this.props
       Cookies.remove('jwt_token')
+      Cookies.remove('username')
+      Cookies.remove('password')
       history.replace('/login')
     }
   }
 
   render() {
+    const userName = Cookies.get('username')
+    const passWord = Cookies.get('password')
+    const passwordList = passWord.split('')
+    const hashed = passwordList.map(each => '*')
+
+    console.log(hashed)
     return (
-      <div className="popular-movies-con">
+      <div className="account-con">
         <Header />
         <div className="account-container">
           <h1 className="account-heading">Account</h1>
           <hr className="rule" />
           <div className="member-ship">
-            <h1 className="member-heading">Member ship</h1>
+            <p className="member-heading">Member ship</p>
             <div className="gmail-password">
-              <h1 className="gmail-heading">rahul@gmail.com</h1>
-              <h1 className="password-heading">Password : ************</h1>
+              <h1 className="gmail-heading">{userName}</h1>
+              <p className="password-heading">Password : {hashed}</p>
             </div>
           </div>
           <hr className="rule" />
           <div className="member-ship">
-            <h1 className="member-heading">Plan details</h1>
-            <h1 className="premium">Premium</h1>
-            <h1 className="ultra-hd">Ultra HD</h1>
+            <p className="member-heading">Plan details</p>
+            <p className="premium">Premium</p>
+            <p className="ultra-hd">Ultra HD</p>
           </div>
           <hr className="rule" />
           <button

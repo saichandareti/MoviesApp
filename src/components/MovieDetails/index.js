@@ -1,18 +1,33 @@
 import './index.css'
 import {Component} from 'react'
 import Cookies from 'js-cookie'
+import Loader from 'react-loader-spinner'
 import {format} from 'date-fns'
 import Header from '../Header'
 import ContactUs from '../ContactUs'
 
+const apiConstants = {
+  onSuccess: 'SUCCESS',
+  onFailure: 'FAILED',
+  inProgress: 'IN_PROGRESS',
+  initial: 'INTIAL',
+}
+
 class MovieDetails extends Component {
-  state = {movieDetails: [], similarMovies: [], spokenLanguages: [], genres: []}
+  state = {
+    isSuccess: apiConstants.initial,
+    movieDetails: [],
+    similarMovies: [],
+    spokenLanguages: [],
+    genres: [],
+  }
 
   componentDidMount() {
     this.GetMovieDetails()
   }
 
   GetMovieDetails = async () => {
+    this.setState({isSuccess: apiConstants.inProgress})
     const {match} = this.props
     const {params} = match
     const {id} = params
@@ -62,12 +77,44 @@ class MovieDetails extends Component {
         similarMovies,
         spokenLanguages,
         genres: jsonMovie.genres,
+        isSuccess: apiConstants.onSuccess,
       })
+    } else if (response.ok !== true) {
+      this.setState({isSuccess: apiConstants.onFailure})
     }
   }
 
-  render() {
-    const {movieDetails, similarMovies, spokenLanguages, genres} = this.state
+  onFailure = () => (
+    <div className="details-failure">
+      <Header />
+      <div className="movie-details-failure">
+        <img
+          src="https://res.cloudinary.com/dgwqllbxi/image/upload/v1695818080/Background-Complete_o749xy.png"
+          alt="failure view"
+          className="something-went-wrong"
+        />
+        <p className="something-went-para">
+          Something went wrong. Please try again
+        </p>
+        <button
+          type="button"
+          className="try-again-button"
+          onClick={this.GetMovieDetails}
+        >
+          Try Again
+        </button>
+      </div>
+    </div>
+  )
+
+  renderMovies = () => {
+    const {
+      movieDetails,
+      similarMovies,
+      spokenLanguages,
+      genres,
+      isSuccess,
+    } = this.state
     const {
       adult,
       title,
@@ -91,76 +138,96 @@ class MovieDetails extends Component {
       fullDate = format(dateObject, 'do MMMM Y')
     }
 
-    return (
-      <div className="movie-details-con">
-        <div
-          className="avenger-con"
-          style={{backgroundImage: `url(${posterPath})`}}
-        >
-          <Header />
-          <h1 className="movie-item-name">{title}</h1>
-          <div className="duration-con">
-            <p className="movie-duration">
-              {formattedHours}h {formattedMinutes}m
-            </p>
-            <p className="u-a-rating">U/A</p>
-            <p className="movie-year">{year}</p>
-          </div>
-          <p className="super-para">{overview}</p>
-          <button type="button" className="movie-play-button">
-            Play
-          </button>
-        </div>
-        <div className="movie-sub-details">
-          <div className="genre-con">
-            <h1 className="genre">Genres</h1>
-            <ul className="genre-list">
-              {genres.map(every => (
-                <li className="genre-name" key={every.id}>
-                  {every.name}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="genre-con">
-            <h1 className="audio">Audio Available</h1>
-            <ul className="genre-list">
-              {spokenLanguages.map(each => (
-                <li className="genre-name" key={each.id}>
-                  {each.englishName}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="genre-con">
-            <h1 className="audio">Rating Count</h1>
-            <p className="genre-name rating">{voteCount}</p>
-            <h1 className="audio rating-top">Rating Average</h1>
-            <p className="genre-name rating">{voteAverage}</p>
-          </div>
-          <div className="genre-con">
-            <h1 className="audio">Budget</h1>
-            <p className="genre-name rating">{budget}</p>
-            <h1 className="audio rating-top">Release Date</h1>
-            <p className="genre-name rating">{fullDate}</p>
-          </div>
-        </div>
-        <h1 className="trending">More like this</h1>
-        <ul className="similar-list">
-          {similarMovies.map(each => (
-            <li className="more-item" key={each.id}>
-              <img
-                src={each.posterPath}
-                alt={each.title}
-                className="more-movie"
-              />
-            </li>
-          ))}
-        </ul>
+    const adultRating = adult ? 'A' : 'U/A'
 
-        <ContactUs />
-      </div>
-    )
+    switch (isSuccess) {
+      case apiConstants.onSuccess:
+        return (
+          <div className="movie-details-con">
+            <div
+              className="avenger-con"
+              style={{backgroundImage: `url(${posterPath})`}}
+            >
+              <Header />
+              <h1 className="movie-item-name">{title}</h1>
+              <div className="duration-con">
+                <p className="movie-duration">
+                  {formattedHours}h {formattedMinutes}m
+                </p>
+                <p className="u-a-rating">{adultRating}</p>
+                <p className="movie-year">{year}</p>
+              </div>
+              <p className="super-para">{overview}</p>
+              <button type="button" className="movie-play-button">
+                Play
+              </button>
+            </div>
+            <div className="movie-sub-details">
+              <div className="genre-con">
+                <h1 className="genre">Genres</h1>
+                <div className="genre-list">
+                  {genres.map(every => (
+                    <p className="genre-name" key={every.id}>
+                      {every.name}
+                    </p>
+                  ))}
+                </div>
+              </div>
+              <div className="genre-con">
+                <h1 className="audio">Audio Available</h1>
+                <div className="genre-list">
+                  {spokenLanguages.map(each => (
+                    <p className="genre-name" key={each.id}>
+                      {each.englishName}
+                    </p>
+                  ))}
+                </div>
+              </div>
+              <div className="genre-con">
+                <h1 className="audio">Rating Count</h1>
+                <p className="genre-name rating">{voteCount}</p>
+                <h1 className="audio rating-top">Rating Average</h1>
+                <p className="genre-name rating">{voteAverage}</p>
+              </div>
+              <div className="genre-con">
+                <h1 className="audio">Budget</h1>
+                <p className="genre-name rating">{budget}</p>
+                <p className="audio rating-top">Release Date</p>
+                <p className="genre-name rating">{fullDate}</p>
+              </div>
+            </div>
+            <h1 className="trending">More like this</h1>
+            <ul className="similar-list">
+              {similarMovies.map(each => (
+                <li className="more-item" key={each.id}>
+                  <img
+                    src={each.posterPath}
+                    alt={each.title}
+                    className="more-movie"
+                  />
+                </li>
+              ))}
+            </ul>
+
+            <ContactUs />
+          </div>
+        )
+      case apiConstants.onFailure:
+        return this.onFailure()
+      case apiConstants.inProgress:
+        return (
+          <div className="loader-container load-con" testid="loader">
+            <Loader type="TailSpin" color="#D81F26" height={50} width={50} />
+          </div>
+        )
+
+      default:
+        return null
+    }
+  }
+
+  render() {
+    return this.renderMovies()
   }
 }
 export default MovieDetails
