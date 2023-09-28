@@ -1,5 +1,6 @@
 import './index.css'
 import {Component} from 'react'
+import {AiOutlineClose} from 'react-icons/ai'
 import Cookies from 'js-cookie'
 import {Link} from 'react-router-dom'
 import Loader from 'react-loader-spinner'
@@ -76,20 +77,23 @@ class Popular extends Component {
     switch (isSuccess) {
       case apiConstants.onSuccess:
         return (
-          <ul className="popular-list">
-            {popularData.map(every => (
-              <li className="popular-item" key={every.id}>
-                <Link to={`/movies/${every.id}`}>
-                  <img
-                    src={every.posterPath}
-                    alt={every.name}
-                    key={every.id}
-                    className="popular-movie"
-                  />
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <>
+            <ul className="popular-list">
+              {popularData.map(every => (
+                <li className="popular-item" key={every.id}>
+                  <Link to={`/movies/${every.id}`}>
+                    <img
+                      src={every.posterPath}
+                      alt={every.name}
+                      key={every.id}
+                      className="popular-movie"
+                    />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <ContactUs />
+          </>
         )
       case apiConstants.onFailure:
         return this.onFailure()
@@ -109,8 +113,21 @@ class Popular extends Component {
     return (
       <div className="popular-movies-con">
         <Header />
+        <ul className="popular-options">
+          <Link to="/" className="link-element">
+            <li className="popular-home pop-home">Home</li>
+          </Link>
+          <Link to="/popular" className="link-element">
+            <li className="popular-home">Popular</li>
+          </Link>
+          <Link to="/popular" className="link-element">
+            <li className="popular-home pop-account">Account</li>
+          </Link>
+          <Link to="/popular" className="link-element">
+            <AiOutlineClose className="close-icon" />
+          </Link>
+        </ul>
         {this.renderMovies()}
-        <ContactUs />
       </div>
     )
   }

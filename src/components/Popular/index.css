@@ -21,3 +21,58 @@
   margin-right: 24px;
   border-radius: 8px;
 }
+.popular-options {
+  display: none;
+}
+@media (max-width: 768px) {
+  .popular-movies-con {
+    width: 360px;
+    height: auto;
+    padding-bottom: 30px;
+  }
+  .popular-movie {
+    width: 90px;
+    height: 100px;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+  .popular-list {
+    margin-left: 32px;
+    margin-top: -10px;
+  }
+  .popular-options {
+    display: inline;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 0px;
+  }
+  .popular-home {
+    width: 42px;
+    height: 26px;
+    font-family: HK Grotesk;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: -0.35555556416511536px;
+    text-align: left;
+    color: #ffffff;
+    list-style-type: none;
+    margin-left: 34px;
+  }
+  .pop-home {
+    margin-left: 0px;
+  }
+  .pop-account {
+    margin-left: 34px;
+  }
+  .close-icon {
+    background-color: #ffffff;
+    color: #181818;
+    padding: 4px;
+    height: 16px;
+    width: 16px;
+    border-radius: 8px;
+    margin-left: 54px;
+  }
+}

@@ -31,3 +31,26 @@
   text-align: left;
   color: #ffffff;
 }
+@media (max-width: 768px) {
+  .contact-con {
+    margin-top: 64px;
+    margin-left: 125px;
+  }
+  .contact-us {
+    margin-left: 151px;
+    width: 60px;
+    height: 16px;
+    font-family: HK Grotesk;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0px;
+    text-align: left;
+
+    color: #ffffff;
+  }
+  .google-icon {
+    width: 14px;
+    height: 16px;
+  }
+}

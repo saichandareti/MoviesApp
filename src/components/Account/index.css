@@ -106,8 +106,8 @@
   color: #1e293b;
 }
 .logout-button {
-  width: Hug (89px);
-  height: Hug (40px);
+  width: 89px;
+  height: 40px;
   margin-top: 64px;
   margin-left: 675px;
   border: 0px solid;
@@ -127,4 +127,110 @@
   color: #ffffff;
   outline: none;
   cursor: pointer;
+}
+@media (max-width: 768px) {
+  .account-con {
+    width: 360px;
+    height: 640px;
+    background-color: #131313;
+  }
+  .account-container {
+    height: 407px;
+    width: 360px;
+    padding-top: 32px;
+    margin-top: -14px;
+    padding-bottom: 82px;
+  }
+  .account-heading {
+    width: 90px;
+    height: 28px;
+    margin-left: 32px;
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: 0px;
+    text-align: left;
+  }
+  .rule {
+    width: 296px;
+    height: 2px;
+    margin-top: 8px;
+    margin-left: 32px;
+    border-radius: 10px;
+  }
+  .member-ship {
+    margin-left: 32px;
+    margin-top: 24px;
+    padding-left: 0px;
+  }
+  .member-heading {
+    height: 23px;
+    font-family: HK Grotesk;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 23px;
+    letter-spacing: 0px;
+    margin-top: 14px;
+  }
+  .gmail-password {
+    margin-left: 0px;
+  }
+  .gmail-heading {
+    width: 129px;
+    height: 21px;
+    font-family: HK Grotesk;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0px;
+    text-align: left;
+
+    margin-top: 14px;
+  }
+  .password-heading {
+    width: 168px;
+    height: 21px;
+    font-family: HK Grotesk;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0px;
+    text-align: left;
+  }
+  .premium {
+    width: 64px;
+    height: 21px;
+    font-family: HK Grotesk;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0px;
+    text-align: left;
+    margin-left: 0px;
+    padding-left: 0px;
+  }
+  .ultra-hd {
+    font-family: HK Grotesk;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0px;
+    text-align: left;
+    padding: 2px;
+    padding-left: 4px;
+    padding-bottom: 2px;
+    padding-right: 4px;
+    border-radius: 2px;
+    border: 1px solid #1e293b;
+    gap: 10px;
+  }
+  .logout-button {
+    width: 89px;
+    height: 40px;
+    margin-top: 48px;
+    margin-left: 136px;
+    padding: 8px, 20px, 8px, 20px;
+    border-radius: 4px;
+  }
 }

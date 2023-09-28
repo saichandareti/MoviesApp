@@ -31,6 +31,13 @@ const Header = () => (
         className="avatar"
       />
     </Link>
+    <Link to="/account" className="link-element">
+      <img
+        src="https://res.cloudinary.com/dgwqllbxi/image/upload/v1695886764/add-to-queue_1_zbdmlt.png"
+        alt="profile"
+        className="add-to-que"
+      />
+    </Link>
   </ul>
 )
 

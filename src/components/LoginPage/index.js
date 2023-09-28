@@ -69,7 +69,7 @@ class LoginPage extends Component {
       <p className="error-msg"> </p>
     )
     return (
-      <div className="bg-container">
+      <div className="login-bg-container">
         <img
           src="https://res.cloudinary.com/dgwqllbxi/image/upload/v1695201554/Group_7399_tj78al.png"
           alt="login website logo"

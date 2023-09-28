@@ -62,12 +62,35 @@ class TrendingNow extends Component {
       dots: false,
       slidesToShow: 4,
       slidesToScroll: 1,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 4,
+            slidesToScroll: 1,
+          },
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+          },
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+          },
+        },
+      ],
     }
 
     switch (isTrendingSuccess) {
       case trendingApiConstants.onSuccess:
         return (
-          <div className="slick-container">
+          <div className="trending-slick-container">
             <Slider {...settings}>
               {trendingData.map(every => (
                 <Link to={`/movies/${every.id}`} key={every.id}>
@@ -86,13 +109,13 @@ class TrendingNow extends Component {
         )
       case trendingApiConstants.onFailure:
         return (
-          <div className="originals-failure">
+          <div className="trending-failure">
             <img
               src="https://res.cloudinary.com/dgwqllbxi/image/upload/v1695825829/alert-triangle_ksyewu.png"
               alt="failure view"
-              className="x-alert"
+              className="trending-x-alert"
             />
-            <p className="originals-para">
+            <p className="trending-para">
               Something went wrong. Please try again
             </p>
             <button

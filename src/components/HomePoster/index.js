@@ -70,13 +70,13 @@ class HomePoster extends Component {
       case trendingApiConstants.onSuccess:
         return (
           <div
-            className="spider-con"
+            className="spider-man-con"
             style={{backgroundImage: `url(${backdropPath})`}}
           >
             <Header />
-            <h1 className="super-man">{title}</h1>
-            <p className="super-para">{overview}</p>
-            <button type="button" className="play-button">
+            <h1 className="super-man-title">{title}</h1>
+            <p className="super-man-para">{overview}</p>
+            <button type="button" className="super-play-button">
               Play
             </button>
           </div>

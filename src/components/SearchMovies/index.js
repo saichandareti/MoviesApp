@@ -62,6 +62,7 @@ class SearchMovies extends Component {
         <img
           src="https://res.cloudinary.com/dgwqllbxi/image/upload/v1695670878/nores_hoeqa4.png"
           alt="no movies"
+          className="no-res-image"
         />
         <p className="no-results-para">
           Your search for {searchInput} did not find any matches.
@@ -168,6 +169,13 @@ class SearchMovies extends Component {
               src="https://res.cloudinary.com/dgwqllbxi/image/upload/v1695374031/Mask_Group_zdn2jk.png"
               alt="avatar"
               className="avatar"
+            />
+          </Link>
+          <Link to="/account" className="link-element">
+            <img
+              src="https://res.cloudinary.com/dgwqllbxi/image/upload/v1695886764/add-to-queue_1_zbdmlt.png"
+              alt="profile"
+              className="add-to-que"
             />
           </Link>
         </ul>

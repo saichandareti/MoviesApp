@@ -1,4 +1,4 @@
-.bg-container {
+.login-bg-container {
   width: 1440px;
   height: 1024px;
   top: 1203px;
@@ -103,4 +103,67 @@
   color: #ff0b37;
   font-size: 12px;
   margin-left: 50px;
+}
+@media (max-width: 768px) {
+  .login-bg-container {
+    width: 360px;
+    height: 640px;
+    background-image: none;
+    background-color: #131313;
+  }
+  .login-container {
+    background-color: transparent;
+    margin-top: 65px;
+    margin-left: 32px;
+  }
+  .movies-image {
+    width: 100px;
+    height: 27px;
+    margin-top: 32px;
+    margin-left: 32px;
+  }
+  .login-heading {
+    width: 80px;
+    height: 40px;
+    margin: 0px;
+    font-family: Roboto;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 40px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #ffffff;
+  }
+  .name-input-con {
+    width: 296px;
+    height: 64px;
+    margin-left: 0px;
+    margin-top: 56px;
+  }
+  .password-input-con {
+    width: 296px;
+    height: 64px;
+    margin-left: 0px;
+    margin-top: 22px;
+  }
+  .username {
+    width: 65px;
+    height: 16px;
+  }
+  .name-input {
+    width: 296px;
+    height: 40px;
+    border-radius: 2px;
+  }
+  .login-button {
+    width: 296px;
+    height: 40px;
+    border-radius: 4px;
+    gap: 10px;
+    margin-left: 0px;
+    margin-top: 32px;
+  }
+  .error-msg {
+    margin-left: 0px;
+  }
 }

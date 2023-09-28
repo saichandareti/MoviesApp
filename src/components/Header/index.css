@@ -25,6 +25,7 @@
   text-align: left;
   color: #ffffff;
   font-family: HK Grotesk;
+  list-style-type: none;
 }
 
 .popular-para {
@@ -39,6 +40,7 @@
   letter-spacing: -0.35555556416511536px;
   text-align: left;
   color: #ffffff;
+  list-style-type: none;
 }
 .search-icon {
   width: 24px;
@@ -64,4 +66,38 @@
 }
 .link-element {
   text-decoration: none;
+}
+.add-to-que {
+  display: none;
+}
+@media (max-width: 768px) {
+  .header-container {
+    width: 360px;
+    height: 75px;
+  }
+  .movies {
+    width: 100px;
+    height: 27px;
+    margin-top: 24px;
+    margin-left: 2px;
+  }
+  .home-para {
+    display: none;
+  }
+  .popular-para {
+    display: none;
+  }
+  .search-button {
+    margin-left: 92px;
+  }
+  .avatar {
+    display: none;
+  }
+  .add-to-que {
+    width: 24px;
+    height: 24px;
+    margin-top: 26px;
+    margin-left: 30px;
+    display: inline;
+  }
 }

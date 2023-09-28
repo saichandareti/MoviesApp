@@ -45,7 +45,7 @@ class MovieDetails extends Component {
     const response = await fetch(url, options)
     const jsonData = await response.json()
     const jsonMovie = jsonData.movie_details
-    console.log(jsonMovie)
+
     if (response.ok === true) {
       const updatedData = {
         adult: jsonMovie.adult,
@@ -157,7 +157,7 @@ class MovieDetails extends Component {
                 <p className="u-a-rating">{adultRating}</p>
                 <p className="movie-year">{year}</p>
               </div>
-              <p className="super-para">{overview}</p>
+              <p className="movie-details-para">{overview}</p>
               <button type="button" className="movie-play-button">
                 Play
               </button>
@@ -173,7 +173,7 @@ class MovieDetails extends Component {
                   ))}
                 </div>
               </div>
-              <div className="genre-con">
+              <div className="genre-con pading-left">
                 <h1 className="audio">Audio Available</h1>
                 <div className="genre-list">
                   {spokenLanguages.map(each => (
@@ -183,20 +183,20 @@ class MovieDetails extends Component {
                   ))}
                 </div>
               </div>
-              <div className="genre-con">
+              <div className="genre-con pading-left">
                 <h1 className="audio">Rating Count</h1>
                 <p className="genre-name rating">{voteCount}</p>
                 <h1 className="audio rating-top">Rating Average</h1>
                 <p className="genre-name rating">{voteAverage}</p>
               </div>
-              <div className="genre-con">
+              <div className="genre-con ">
                 <h1 className="audio">Budget</h1>
                 <p className="genre-name rating">{budget}</p>
                 <p className="audio rating-top">Release Date</p>
                 <p className="genre-name rating">{fullDate}</p>
               </div>
             </div>
-            <h1 className="trending">More like this</h1>
+            <h1 className=" trending more-movies">More like this</h1>
             <ul className="similar-list">
               {similarMovies.map(each => (
                 <li className="more-item" key={each.id}>
