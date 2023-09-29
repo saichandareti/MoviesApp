@@ -192,7 +192,7 @@ class MovieDetails extends Component {
               <div className="genre-con ">
                 <h1 className="audio">Budget</h1>
                 <p className="genre-name rating">{budget}</p>
-                <p className="audio rating-top">Release Date</p>
+                <h1 className="audio rating-top">Release Date</h1>
                 <p className="genre-name rating">{fullDate}</p>
               </div>
             </div>

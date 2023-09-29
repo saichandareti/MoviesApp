@@ -16,10 +16,6 @@ const apiConstants = {
 class SearchMovies extends Component {
   state = {isSuccess: apiConstants.initial, searchInput: '', moviesData: []}
 
-  componentDidMount() {
-    this.GetSearchedMovies()
-  }
-
   GetInput = event => {
     this.setState({searchInput: event.target.value})
   }

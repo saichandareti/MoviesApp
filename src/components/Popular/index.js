@@ -1,6 +1,8 @@
 import './index.css'
 import {Component} from 'react'
 import {AiOutlineClose} from 'react-icons/ai'
+import {FaGoogle, FaTwitter, FaInstagram, FaYoutube} from 'react-icons/fa'
+
 import Cookies from 'js-cookie'
 import {Link} from 'react-router-dom'
 import Loader from 'react-loader-spinner'
@@ -80,19 +82,27 @@ class Popular extends Component {
           <>
             <ul className="popular-list">
               {popularData.map(every => (
-                <li className="popular-item" key={every.id}>
-                  <Link to={`/movies/${every.id}`}>
+                <Link to={`/movies/${every.id}`} key={every.id}>
+                  <li className="popular-item" key={every.id}>
                     <img
                       src={every.posterPath}
-                      alt={every.name}
+                      alt={every.title}
                       key={every.id}
                       className="popular-movie"
                     />
-                  </Link>
-                </li>
+                  </li>
+                </Link>
               ))}
             </ul>
-            <ContactUs />
+            <>
+              <div className="contact-con">
+                <FaGoogle className="google-icon" />
+                <FaTwitter className="google-icon icon-margin" />
+                <FaInstagram className="google-icon icon-margin" />
+                <FaYoutube className="google-icon icon-margin" />
+              </div>
+              <p className="contact-us">Contact us</p>
+            </>
           </>
         )
       case apiConstants.onFailure:

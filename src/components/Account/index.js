@@ -1,5 +1,7 @@
 import './index.css'
 import {Component} from 'react'
+import {FaGoogle, FaTwitter, FaInstagram, FaYoutube} from 'react-icons/fa'
+
 import Cookies from 'js-cookie'
 import Header from '../Header'
 import ContactUs from '../ContactUs'
@@ -52,7 +54,15 @@ class Account extends Component {
           </button>
         </div>
 
-        <ContactUs />
+        <>
+          <div className="contact-con">
+            <FaGoogle className="google-icon" />
+            <FaTwitter className="google-icon icon-margin" />
+            <FaInstagram className="google-icon icon-margin" />
+            <FaYoutube className="google-icon icon-margin" />
+          </div>
+          <p className="contact-us">Contact us</p>
+        </>
       </div>
     )
   }
