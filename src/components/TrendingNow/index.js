@@ -36,9 +36,9 @@ class TrendingNow extends Component {
       'https://apis.ccbp.in/movies-app/trending-movies',
       details,
     )
-    const jsonData = await response.json()
 
     if (response.ok === true) {
+      const jsonData = await response.json()
       const updatedData = jsonData.results.map(each => ({
         id: each.id,
         backdropPath: each.backdrop_path,
