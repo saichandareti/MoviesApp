@@ -61,7 +61,9 @@ class TrendingNow extends Component {
     const settings = {
       dots: false,
       slidesToShow: 4,
+      speed: 500,
       slidesToScroll: 1,
+      infinite: false,
       responsive: [
         {
           breakpoint: 1024,
@@ -120,7 +122,7 @@ class TrendingNow extends Component {
             </p>
             <button
               type="button"
-              className="try-again-originals"
+              className="try-again-trending"
               onClick={this.GetTrendingMovies}
             >
               Try Again

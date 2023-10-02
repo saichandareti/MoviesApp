@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import Loader from 'react-loader-spinner'
 import Slider from 'react-slick'
 
-const trendingApiConstants = {
+const originalApiConstants = {
   onSuccess: 'SUCCESS',
   onFailure: 'FAILED',
   inProgress: 'IN_PROGRESS',
@@ -15,7 +15,7 @@ const trendingApiConstants = {
 class Originals extends Component {
   state = {
     trendingData: [],
-    isTrendingSuccess: trendingApiConstants.initial,
+    isTrendingSuccess: originalApiConstants.initial,
   }
 
   componentDidMount() {
@@ -23,7 +23,7 @@ class Originals extends Component {
   }
 
   GetOriginalMovies = async () => {
-    this.setState({isTrendingSuccess: trendingApiConstants.inProgress})
+    this.setState({isTrendingSuccess: originalApiConstants.inProgress})
     const jwtToken = Cookies.get('jwt_token')
 
     const details = {
@@ -49,20 +49,22 @@ class Originals extends Component {
       }))
       this.setState({
         trendingData: updatedData,
-        isTrendingSuccess: trendingApiConstants.onSuccess,
+        isTrendingSuccess: originalApiConstants.onSuccess,
       })
     } else if (response.ok !== true) {
-      this.setState({isTrendingSuccess: trendingApiConstants.onFailure})
+      this.setState({isTrendingSuccess: originalApiConstants.onFailure})
     }
   }
 
-  renderTrendingMovies = () => {
+  renderOriginalMovies = () => {
     const {isTrendingSuccess, trendingData} = this.state
 
     const settings = {
       dots: false,
       slidesToShow: 4,
+      speed: 500,
       slidesToScroll: 1,
+      infinite: false,
       responsive: [
         {
           breakpoint: 1024,
@@ -89,18 +91,18 @@ class Originals extends Component {
     }
 
     switch (isTrendingSuccess) {
-      case trendingApiConstants.onSuccess:
+      case originalApiConstants.onSuccess:
         return (
           <div className="original-slick-container">
             <Slider {...settings}>
               {trendingData.map(every => (
                 <Link to={`/movies/${every.id}`} key={every.id}>
-                  <div className="trending-movie">
+                  <div className="original-movie">
                     <img
                       src={every.posterPath}
                       alt={every.name}
                       key={every.id}
-                      className="trending-movie"
+                      className="original-movie"
                     />
                   </div>
                 </Link>
@@ -108,13 +110,13 @@ class Originals extends Component {
             </Slider>
           </div>
         )
-      case trendingApiConstants.onFailure:
+      case originalApiConstants.onFailure:
         return (
           <div className="originals-failure">
             <img
               src="https://res.cloudinary.com/dgwqllbxi/image/upload/v1695825829/alert-triangle_ksyewu.png"
               alt="failure view"
-              className="x-alert"
+              className="original-x-alert"
             />
             <p className="originals-para">
               Something went wrong. Please try again
@@ -128,7 +130,7 @@ class Originals extends Component {
             </button>
           </div>
         )
-      case trendingApiConstants.inProgress:
+      case originalApiConstants.inProgress:
         return (
           <div className="loader-container load-con" testid="loader">
             <Loader type="TailSpin" color="#D81F26" height={50} width={50} />
@@ -141,7 +143,7 @@ class Originals extends Component {
   }
 
   render() {
-    return this.renderTrendingMovies()
+    return this.renderOriginalMovies()
   }
 }
 
